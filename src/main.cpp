@@ -14,8 +14,8 @@ int main() {
     std::cout << "$ ";
     std::string input;
     std::cin >> input;
-    if (is_valid_command) {
-      std::cout << "{" << input << "}: command not found\n";
+    if (!is_valid_command(input)) {
+      std::cout << input << ": command not found\n";
     }
   }
 }
