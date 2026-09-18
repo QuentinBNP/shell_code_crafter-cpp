@@ -13,8 +13,15 @@ int main() {
   while (true) {
     std::cout << "$ ";
     std::string input;
-    std::cin >> input;
+    // Read the whole line (including spaces) and handle EOF cleanly.
+    if (!std::getline(std::cin, input)) {
+      break; // EOF or error
+    }
+    if (input.empty()) {
+      continue; // ignore empty lines
+    }
     if (!is_valid_command(input)) {
+      // Use '\n' instead of std::endl to avoid unnecessary flushes.
       std::cout << input << ": command not found\n";
     }
   }
