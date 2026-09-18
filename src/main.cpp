@@ -17,9 +17,15 @@ int main() {
       continue; // ignore empty lines
     }
     if (input == "exit") {
-      // Use '\n' instead of std::endl to avoid unnecessary flushes.
       break;
     }
+    if (input.substr(0, 4) == "echo") {
+      if (input.length() > 5) {
+        std::cout << input.substr(5) << "\n";
+      }
+      continue;
+    }
+    // Use '\n' instead of std::endl to avoid unnecessary flushes.
     std::cout << input << ": command not found\n";
   }
   return 0;
