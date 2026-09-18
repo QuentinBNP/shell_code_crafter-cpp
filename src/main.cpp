@@ -1,10 +1,6 @@
 #include <iostream>
 #include <string>
 
-bool is_valid_command(const std::string& input) {
-  return false;
-}
-
 int main() {
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
@@ -20,9 +16,11 @@ int main() {
     if (input.empty()) {
       continue; // ignore empty lines
     }
-    if (!is_valid_command(input)) {
+    if (input == "exit") {
       // Use '\n' instead of std::endl to avoid unnecessary flushes.
-      std::cout << input << ": command not found\n";
+      break;
     }
+    std::cout << input << ": command not found\n";
   }
+  return 0;
 }
